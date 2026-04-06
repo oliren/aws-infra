@@ -6,5 +6,9 @@ terraform {
       source  = "hashicorp/aws"
       version = ">= 6.13"
     }
+    twingate = {
+      source  = "Twingate/twingate"
+      version = "4.1.0"
+    }
   }
 }
