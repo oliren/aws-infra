@@ -59,3 +59,18 @@ module "ec2_tenant_connector" {
 
 
 }
+
+data "twingate_groups" "all" {
+  name = "Everyone"
+}
+
+resource "twingate_resource" "tg_vpc" {
+  name = "Playground VPC"
+  address = local.vpc_cidr
+  remote_network_id = twingate_remote_network.aws_network.id
+
+  access_group {
+    group_id                           = data.twingate_groups.all.groups[0].id
+  }
+
+}
