@@ -57,6 +57,9 @@ module "ec2_tenant_connector" {
   vpc_security_group_ids = [module.twingate_sg.security_group_id]
   subnet_id              = module.vpc.private_subnets[0]
 
+  tags = {
+    prevent_stop = true
+  }
 
 }
 
